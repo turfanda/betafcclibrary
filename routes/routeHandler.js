@@ -14,7 +14,17 @@ exports.createBook = function(req, res) {
 }
 
 exports.getAllBook = function(req, res) {
-    bookModel.getAllBook(function(err, data) {
+    bookModel.getBook(function(err, data) {
+        if (err)
+            return res.status(501).send("Internal Error");
+        else {
+            return res.json(data)
+        }
+    });
+}
+
+exports.deleteAllBook = function(req, res) {
+    bookModel.deleteBook(function(err, data) {
         if (err)
             return res.status(501).send("Internal Error");
         else {
@@ -24,7 +34,7 @@ exports.getAllBook = function(req, res) {
 }
 
 exports.getBookByName = function(req, res) {
-    bookModel.getBookByName(req.params.book_title, function(err, data) {
+    bookModel.getBook(req.params.book_title, function(err, data) {
         if (data === null) 
             return res.status(500).send("No such project");
         else 
@@ -43,11 +53,11 @@ exports.getBookById = function(req, res) {
         });
 }
 
-exports.deleteIssue = function(req, res) {
+exports.deleteBook = function(req, res) {
     if (req.body.book_Id === '')
         return res.status(400).send("No Id Send");
     else
-        bookModel.deleteBookById(req.body.issue_Id, function(err, data) {
+        bookModel.deleteBook(req.body.book_Id, function(err, data) {
             if (err)
                 return res.status(400).send("No such book");
             else
@@ -55,12 +65,12 @@ exports.deleteIssue = function(req, res) {
         });
 }
 
-exports.updateIssue = function(req, res) {
+exports.updateBook = function(req, res) {
   let updates = req.body.book_comment;
     if (req.body.book_id === '')
         return res.status(400).send("No Id Send");
     else 
-      bookModel.updateIssueById(req.body.book_id, updates, function(err, data) {
+      bookModel.updateBookById(req.body.book_id, updates, function(err, data) {
                 if (err)
                     return res.status(400).send("No such issue");
                 else

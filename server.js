@@ -23,10 +23,10 @@ app.get("/", function (request, response) {
 
 app.get("/api/books",routes.getAllBook);
 app.post("/api/books",routes.createBook);
-app.delete("/api/books",routes.deleteBook);
-app.post("/api/issues/:project_name",routes.createIssue);
-app.put("/api/issues/:project_name",routes.updateIssue);
-app.delete("/api/issues/:project_name",routes.deleteIssue);
+app.delete("/api/books",routes.deleteAllBook);
+app.get("/api/books/:book_title",routes.getBook);
+app.post("/api/books/:book_title",routes.updateBook);
+app.delete("/api/books/:book_title",routes.deleteBook);
 
 
 if (!module.parent) {
