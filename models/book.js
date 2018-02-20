@@ -26,7 +26,10 @@ module.exports.getBookByName = function(name,callback){
   book.findOne(query,callback);
 }
 module.exports.deleteBookById = function(id,callback){
+  if(id!==undefined)
   book.findByIdAndRemove(id,callback);
+  else
+    
 }
 
 module.exports.getAllBook = function(callback){
