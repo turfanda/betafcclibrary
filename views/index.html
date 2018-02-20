@@ -1,15 +1,7 @@
-<!-- This is a static file -->
-<!-- served from your routes in server.js -->
-
-<!-- You might want to try something fancier: -->
-<!-- html/nunjucks docs: https://mozilla.github.io/nunjucks/ -->
-<!-- pug: https://pugjs.org/ -->
-<!-- haml: http://haml.info/ -->
-<!-- hbs(handlebars): http://handlebarsjs.com/ -->
-
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>Welcome to Glitch!</title>
     <meta name="description" content="A cool thing made with Glitch">
     <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
@@ -17,38 +9,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/style.css">
-  </head>
-  <body>
-    <header>
-      <h1>
-        A Dream of the Future
-      </h1>
-    </header>
+</head>
 
-    <main>
-      <p class="bold">Oh hi,</p>
-      <p>Tell me your hopes and dreams:</p>
-      <form>
-        <input type="text" maxlength="100" placeholder="Dreams!">
-        <button type="submit">Submit</button>
-      </form>
-      <section class="dreams">
-        <ul id="dreams">
-        </ul>
-      </section>
-    </main>
+<body>
+<div class="mainWrapper">
+    <div class="wrapper">
+        <div class="insideDiv">
+        </div>
+        <div class="insideDiv">
+            Create issue with project Name
+            <form id="issueCreateForm">
+                <input type="text" name="project_name" placeholder="*Project Name" required>
+                <input type="text" name="issue_title" placeholder="*Issue Name" required>
+                <input type="text" name="issue_text" placeholder="*Issue Text" required>
+                <input type="text" name="created_by" placeholder="*Created By" required>
+                <input type="text" name="assigned_to" placeholder="Assigned To">
+                <input type="text" name="status" placeholder="Status">
+                <button id="issueSubmit">Create Issue</button>
+            </form>
+            Get issue
+            <form id="issueGetForm">
+                <input type="text" name="project_name" placeholder="*Project Name" required>
+                <button id="issueGetSubmit">Get Issue</button>
+            </form>
 
-    <footer>
-      <a href="https://glitch.com">
-        Remix this in Glitch
-      </a>
-    </footer>
+        </div>
+        <div class="insideDiv">
+        </div>
+    </div>
 
-    <!-- Your web-app is https, so your scripts need to be too -->
-    <script src="https://code.jquery.com/jquery-2.2.1.min.js"
-            integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
-            crossorigin="anonymous"></script>
+    <div class="resultDiv">
+
+    </div>
+</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <script src="/client.js"></script>
 
-  </body>
+</body>
+
 </html>
