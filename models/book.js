@@ -32,12 +32,6 @@ module.exports.deleteBook = function(id,callback){
     book.remove({},callback);
 }
 
-module.exports.getBook = function(name,callback){
-    if(name!==undefined)
-    {
-        let query=({book_title:name});
-  book.findOne(query,callback);
-    }
-  else
+module.exports.getAllBook = function(callback){
   book.find(callback);
 }

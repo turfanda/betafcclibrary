@@ -10,7 +10,7 @@ $(function() {
               console.log(response);
                 $("input").val("");
                 $(".resultDiv").empty();
-                $(".resultDiv").text(response);
+                $(".resultDiv").html("<b>Name of Book :</b>"+response.book_title+" <b>Book Id :</b>"+response.id);
             },
             error: function(err) {
                 $(".resultDiv").empty();
@@ -18,17 +18,18 @@ $(function() {
             }
         });
     });
-    $("#getAllProjectSubmit").on("click", function(e) {
+  
+    $("#getAllBooks").on("click", function(e) {
         e.preventDefault();
         $.ajax({
             type: "get",
-            url: "/api/getallproject/",
+            url: "api/books",
             success: function(response) {
                 console.log(response);
                 $(".resultDiv").empty();
                 var ResultDiv = $("<div>").addClass("infoDiv");
                 response.map(function(value, index) {
-                    ResultDiv.html("<p><em><b>Project Name :</b></em>" + value.project_name + "</p><p><em><b>Project Id :</b></em>" + value._id);
+                    ResultDiv.html("<p><em><b>Book Name :</b></em>" + value.book_title + "</p><p><em><b>Book Id :</b></em>" + value.id +"<p><em><b>Book Id :</b></em>"+ value.count);
                 })
                 $(".resultDiv").append(ResultDiv);
             },

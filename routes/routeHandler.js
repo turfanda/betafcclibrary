@@ -10,16 +10,18 @@ exports.createBook = function(req, res) {
     bookModel.createBook(newBook, function(err, data) {
         if (err) return res.status(501).send("Internal Error");
         else {
-            return res.json({data.book_title,data._id});
+            return res.status(200).json({"book_title":data.book_title,"id":data._id});
         }
     });
 }
 
 exports.getAllBook = function(req, res) {
-    bookModel.getBook(function(err, data) {
+  console.log(1);
+    bookModel.getAllBook(function(err, data) {
         if (err)
             return res.status(501).send("Internal Error");
         else {
+          console.log(data);
             return res.json(data)
         }
     });
