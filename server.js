@@ -1,4 +1,4 @@
-
+var helmet = require("helmet");
 var express = require('express');
 const bodyparser = require('body-parser');
 var mongoose = require("mongoose");
@@ -12,6 +12,10 @@ mongoose.connect(process.env.MONGO_URL, function(err){
         console.log('The Mongoose connection is ready');
     }
 });
+
+app.use(helmet());
+app.use(helmet.noCache())
+app.use(helmet.hidePoweredBy({ setTo: 'PHP 4.2.0' }))
 
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
