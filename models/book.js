@@ -18,7 +18,7 @@ module.exports.createBook = function(newBook,callback){
 }
 
 module.exports.updateBookById = function(id,updates,callback){
-  book.findByIdAndUpdate(id,{ "$push": { book_comment: updates } },callback)
+  book.findByIdAndUpdate(id,{ "$push": { "book_comment": updates } },{new: true},callback)
 }
 
 module.exports.getAllBook = function(callback){

@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const bookModel = require('../models/book');
 
 exports.createBook = function(req, res) {
-  console.log(req.body);
     let newBook = new bookModel({
         book_title: req.body.book_title,
       book_comment:[]
@@ -20,7 +19,6 @@ exports.getAllBook = function(req, res) {
         if (err)
             return res.status(501).send("Internal Error");
         else {
-          console.log(data);
           let result = data.map(function(value,index){return {"book_title":value.book_title,"id":value._id,"count":value.book_comment.length};});
             return res.json(result);
         }
@@ -58,8 +56,8 @@ exports.deleteBookById = function(req, res) {
 }
 
 exports.updateBook = function(req, res) {
-  console.log(req.body.book_comment);
       bookModel.updateBookById(req.params.book_id, req.body.book_comment, function(err, data) {
+        console.log(data);
                 if (err)
                     return res.status(400).send("No such issue");
                 else
