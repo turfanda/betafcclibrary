@@ -2,13 +2,15 @@ const mongoose = require('mongoose');
 const bookModel = require('../models/book');
 
 exports.createBook = function(req, res) {
+  console.log(req.body);
     let newBook = new bookModel({
-        title: req.body.book_title
+        book_title: req.body.book_title,
+      book_comment:[]
     });
     bookModel.createBook(newBook, function(err, data) {
         if (err) return res.status(501).send("Internal Error");
         else {
-            return res.status(200).send("<em><b>" + req.body.book_title + "</em></b> has been created and id of this book is :" + "<em><b>" + data._id + "</em></b>");
+            return res.json({data.book_title,data._id});
         }
     });
 }

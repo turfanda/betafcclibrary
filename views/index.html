@@ -15,18 +15,13 @@
 <div class="mainWrapper">
     <div class="wrapper">
         <div class="insideDiv">
+            <form id="bookCreateForm">
+                <input type="text" name="book_title" placeholder="*Book Name" required>
+                <button>Create Book</button>
+            </form>
         </div>
         <div class="insideDiv">
-            Create issue with project Name
-            <form id="issueCreateForm">
-                <input type="text" name="project_name" placeholder="*Project Name" required>
-                <input type="text" name="issue_title" placeholder="*Issue Name" required>
-                <input type="text" name="issue_text" placeholder="*Issue Text" required>
-                <input type="text" name="created_by" placeholder="*Created By" required>
-                <input type="text" name="assigned_to" placeholder="Assigned To">
-                <input type="text" name="status" placeholder="Status">
-                <button id="issueSubmit">Create Issue</button>
-            </form>
+
             Get issue
             <form id="issueGetForm">
                 <input type="text" name="project_name" placeholder="*Project Name" required>

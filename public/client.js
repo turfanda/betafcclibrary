@@ -1,15 +1,16 @@
 $(function() {
 
-    $("#projectCreateForm").submit(function(e) {
+    $("#bookCreateForm").submit(function(e) {
         e.preventDefault();
         $.ajax({
             type: "post",
-            url: "api/",
-            data: $('#projectCreateForm').serialize(),
+            url: "api/books",
+            data: $('#bookCreateForm').serialize(),
             success: function(response) {
+              console.log(response);
                 $("input").val("");
                 $(".resultDiv").empty();
-                $(".resultDiv").html(response);
+                $(".resultDiv").text(response);
             },
             error: function(err) {
                 $(".resultDiv").empty();
