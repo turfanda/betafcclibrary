@@ -59,7 +59,7 @@ exports.updateBook = function(req, res) {
       bookModel.updateBookById(req.params.book_id, req.body.book_comment, function(err, data) {
         console.log(data);
                 if (err)
-                    return res.status(400).send("No such issue");
+                    return res.status(400).send("No such Book");
                 else
                     return res.status(200).json(data);
             });

@@ -32,14 +32,32 @@ describe("Tests", function() {
                 .post('/api/books/'+book.id)
                 .send({book_comment: book.book_comment})
                 .end(function(err, res) {
-            console.log(res.body);
                     expect(res.body).to.have.property('book_title');
                     expect(res.body).to.have.property('_id');
                     expect(res.body).to.have.property('book_comment');
                     assert.isString(res.body.book_title);
                     assert.deepEqual(res.body.book_title, book.book_title);                      
-                    assert.isArray(res.body.book_comment);
+                    assert.isString(res.body.book_comment[0]);
                     done();   
+                });
+        });
+      }
+       it("FalseID", function(done) {
+            chai.request(app)
+                .post('/api/books/daaqw4e09uıjvmzlxkdhfjaskldansd')
+                .send({book_comment:"asd"})
+                .end(function(err, res) {
+              assert.equal(res.text, "No such Book");   
+                    done();
+                });
+        });
+      for (let book of books){
+        it("DeleteBook", function(done) {
+            chai.request(app)
+                .delete('/api/books/'+book.id)
+                .end(function(err, res) {
+ assert.equal(res.text, "Book succesfuly deleted");   
+                    done();
                 });
         });
       }
