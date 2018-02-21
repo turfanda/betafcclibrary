@@ -16,13 +16,13 @@ exports.createBook = function(req, res) {
 }
 
 exports.getAllBook = function(req, res) {
-  console.log(1);
     bookModel.getAllBook(function(err, data) {
         if (err)
             return res.status(501).send("Internal Error");
         else {
           console.log(data);
-            return res.json(data)
+          let result = data.map(function(value,index){return {"book_title":value.book_title,"id":value._id,"count":value.book_comment.length};});
+            return res.json(result);
         }
     });
 }
@@ -32,7 +32,7 @@ exports.deleteAllBook = function(req, res) {
         if (err)
             return res.status(501).send("Internal Error");
         else {
-            return res.json(data)
+            return res.status(200).send("All Books deleted.Congrats you are like mongolians barbar");
         }
     });
 }

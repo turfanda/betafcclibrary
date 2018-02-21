@@ -27,11 +27,28 @@ $(function() {
             success: function(response) {
                 console.log(response);
                 $(".resultDiv").empty();
-                var ResultDiv = $("<div>").addClass("infoDiv");
+                var ResultDiv = $("<div>");
                 response.map(function(value, index) {
-                    ResultDiv.html("<p><em><b>Book Name :</b></em>" + value.book_title + "</p><p><em><b>Book Id :</b></em>" + value.id +"<p><em><b>Book Id :</b></em>"+ value.count);
+                    ResultDiv.append($("<div>").addClass("infoDiv").html("<p><em><b>Book Name :</b></em>" + value.book_title + "</p><p><em><b>Book Id :</b></em>" + value.id +"<p><em><b>Comment Count :</b></em>"+ value.count));
                 })
                 $(".resultDiv").append(ResultDiv);
+            },
+            error: function(err) {
+                $(".resultDiv").empty();
+                $(".resultDiv").append(err.responseText);
+            }
+        });
+    });
+      $("#deleteAllBooks").on("click", function(e) {
+        e.preventDefault();
+        $.ajax({
+            type: "delete",
+            url: "api/books",
+            success: function(response) {
+                console.log(response);
+                $(".resultDiv").empty();
+              $(".resultDiv").text(response);
+                
             },
             error: function(err) {
                 $(".resultDiv").empty();
