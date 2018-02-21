@@ -49,9 +49,6 @@ exports.getBookById = function(req, res) {
 }
 
 exports.deleteBookById = function(req, res) {
-    if (req.params.book_id=== '')
-        return res.status(400).send("No Id Send");
-    else
         bookModel.deleteBookById(req.params.book_id, function(err, data) {
             if (err)
                 return res.status(400).send("No such book");
@@ -61,15 +58,11 @@ exports.deleteBookById = function(req, res) {
 }
 
 exports.updateBook = function(req, res) {
-  let updates = req.body.book_comment;
-    if (req.body.book_id === '')
-        return res.status(400).send("No Id Send");
-    else 
-      bookModel.updateBookById(req.body.book_id, updates, function(err, data) {
+      bookModel.updateBookById(req.params.book_id, req.params.book_comment, function(err, data) {
                 if (err)
                     return res.status(400).send("No such issue");
                 else
-                    return res.status(200).send("Issue Updated");
+                    return res.status(200).json(data);
             });
         
     }

@@ -16,22 +16,23 @@ module.exports.createBook = function(newBook,callback){
 
 module.exports.updateBookById = function(id,updates,callback){
   book.findByIdAndUpdate(id,updates,callback)
-}
-
-module.exports.getBookById = function(id,callback){
-  book.findById(id,callback);
-}
-module.exports.getBookByName = function(name,callback){
-  let query=({book_title:name});
-  book.findOne(query,callback);
-}
-module.exports.deleteAllBook = function(callback){
-    book.remove({},callback);
-}
-module.exports.deleteBookById = function(id,callback){
-    book.findByIdAndRemove(id,callback);
+  
+  bookfindByIdAndUpdate(id,{ "$push": { "book_": employee._id } },
 }
 
 module.exports.getAllBook = function(callback){
   book.find(callback);
 }
+
+module.exports.getBookById = function(id,callback){
+  book.findById(id,callback);
+}
+
+module.exports.deleteAllBook = function(callback){
+    book.remove({},callback);
+}
+
+module.exports.deleteBookById = function(id,callback){
+    book.findByIdAndRemove(id,callback);
+}
+

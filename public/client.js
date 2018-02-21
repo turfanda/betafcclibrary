@@ -67,7 +67,6 @@ if(response.length!==0){
             type: "get",
             url: "/api/books/" + $("#bookGetForm").children().eq(0).val(),
             success: function(response) {
-                console.log(response);
                 $(".resultDiv").empty();
                 var ResultDiv = $("<div>");
                     ResultDiv.append($("<div>").addClass("infoDiv").html("<p><em><b>Book Name :</b></em>" + response.book_title +
@@ -83,23 +82,19 @@ if(response.length!==0){
         });
     });
 
-    $("#issueUpdateForm").submit(function(e) {
+    $("#bookUpdateForm").submit(function(e) {
         e.preventDefault();
-        let object = "";
-        object = $('#issueUpdateForm').serialize();
-        if ($("#extra").is(':checked')) {
-            object = object + "&open=false";
-        }
-        var url = "api/issues/" + $(this).children().val();;
         $.ajax({
-            type: "put",
-            url: url,
-            data: object,
+            type: "post",
+            url: "api/books/" + $("#bookUpdateForm").children().eq(0).val(),
+            data: $("#bookUpdateForm").serialize(),
             success: function(response) {
-                $("#extra").prop("checked", false);
-                $("input").val("");
                 $(".resultDiv").empty();
-                $(".resultDiv").append($("<span>").text(response));
+                var ResultDiv = $("<div>");
+                    ResultDiv.append($("<div>").addClass("infoDiv").html("<p><em><b>Book Name :</b></em>" + response.book_title +
+                        "</p><p><em><b>Book Id :</b></em>" + response._id +
+                        "</p><p><em><b>Comment Text :</b></em>" + response.book_comment.join("-")));
+                $(".resultDiv").append(ResultDiv);
             },
             error: function(err) {
                 $(".resultDiv").empty();
