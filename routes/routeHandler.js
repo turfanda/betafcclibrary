@@ -32,23 +32,13 @@ exports.deleteAllBook = function(req, res) {
         if (err)
             return res.status(501).send("Internal Error");
         else {
-            return res.status(200).send("All Books deleted.Congrats you are like mongolian barbarians");
+            return res.status(200).send("All Books deleted.congratulations you are like mongol barbarians");
         }
     });
 }
 
-exports.getBookByName = function(req, res) {
-    bookModel.getBook(req.params.book_title, function(err, data) {
-        if (data === null) 
-            return res.status(500).send("No such project");
-        else 
-            return res.json(data);
-            
-        });
-}
-
 exports.getBookById = function(req, res) {
-    bookModel.getBookByID(req.params.book_Id, function(err, data) {
+    bookModel.getBookById(req.params.book_Id, function(err, data) {
         if (data === null) 
             return res.status(500).send("No such project");
         else 

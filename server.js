@@ -24,9 +24,9 @@ app.get("/", function (request, response) {
 app.get("/api/books",routes.getAllBook);
 app.post("/api/books",routes.createBook);
 app.delete("/api/books",routes.deleteAllBook);
-app.get("/api/books/:book_title",routes.getBookByName);
-app.post("/api/books/:book_title",routes.updateBook);
-app.delete("/api/books/:book_title",routes.deleteBook);
+app.get("/api/books/:book_id",routes.getBookById);
+app.post("/api/books/:book_id",routes.updateBook);
+app.delete("/api/books/:book_id",routes.deleteBook);
 
 
 if (!module.parent) {
