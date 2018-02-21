@@ -3,7 +3,10 @@ const Schema = mongoose.Schema;
 
 var bookSchema = new Schema({
 	book_title: {type: String},
-	book_comment: [String]
+	book_comment:  {
+       type: Array,
+       default: ''
+  }
 });
 
 var book = mongoose.model("book",bookSchema)
@@ -15,9 +18,7 @@ module.exports.createBook = function(newBook,callback){
 }
 
 module.exports.updateBookById = function(id,updates,callback){
-  book.findByIdAndUpdate(id,updates,callback)
-  
-  bookfindByIdAndUpdate(id,{ "$push": { "book_": employee._id } },
+  book.findByIdAndUpdate(id,{ "$push": { book_comment: updates } },callback)
 }
 
 module.exports.getAllBook = function(callback){

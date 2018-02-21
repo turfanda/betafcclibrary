@@ -58,7 +58,8 @@ exports.deleteBookById = function(req, res) {
 }
 
 exports.updateBook = function(req, res) {
-      bookModel.updateBookById(req.params.book_id, req.params.book_comment, function(err, data) {
+  console.log(req.body.book_comment);
+      bookModel.updateBookById(req.params.book_id, req.body.book_comment, function(err, data) {
                 if (err)
                     return res.status(400).send("No such issue");
                 else

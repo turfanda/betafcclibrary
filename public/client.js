@@ -25,6 +25,7 @@ $(function() {
             type: "get",
             url: "api/books",
             success: function(response) {
+                $("input").val("");
 if(response.length!==0){
                 $(".resultDiv").empty();
                 var ResultDiv = $("<div>");
@@ -50,6 +51,7 @@ if(response.length!==0){
             type: "delete",
             url: "api/books",
             success: function(response) {
+                $("input").val("");
                 $(".resultDiv").empty();
               $(".resultDiv").text(response);
                 
@@ -67,6 +69,7 @@ if(response.length!==0){
             type: "get",
             url: "/api/books/" + $("#bookGetForm").children().eq(0).val(),
             success: function(response) {
+                $("input").val("");
                 $(".resultDiv").empty();
                 var ResultDiv = $("<div>");
                     ResultDiv.append($("<div>").addClass("infoDiv").html("<p><em><b>Book Name :</b></em>" + response.book_title +
@@ -89,6 +92,8 @@ if(response.length!==0){
             url: "api/books/" + $("#bookUpdateForm").children().eq(0).val(),
             data: $("#bookUpdateForm").serialize(),
             success: function(response) {
+              console.log(response);
+                $("input").val("");
                 $(".resultDiv").empty();
                 var ResultDiv = $("<div>");
                     ResultDiv.append($("<div>").addClass("infoDiv").html("<p><em><b>Book Name :</b></em>" + response.book_title +
