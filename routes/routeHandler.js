@@ -28,11 +28,11 @@ exports.getAllBook = function(req, res) {
 }
 
 exports.deleteAllBook = function(req, res) {
-    bookModel.deleteBook(function(err, data) {
+    bookModel.deleteAllBook(function(err, data) {
         if (err)
             return res.status(501).send("Internal Error");
         else {
-            return res.status(200).send("All Books deleted.Congrats you are like mongolians barbar");
+            return res.status(200).send("All Books deleted.Congrats you are like mongolian barbarians");
         }
     });
 }

@@ -6,7 +6,7 @@ var bookSchema = new Schema({
 	book_comment: [String]
 });
 
-var book = mongoose.model("issue",bookSchema)
+var book = mongoose.model("book",bookSchema)
 
 module.exports = book;
 
@@ -25,7 +25,7 @@ module.exports.getBookByName = function(name,callback){
   let query=({book_title:name});
   book.findOne(query,callback);
 }
-module.exports.deleteAllBook = function(id,callback){
+module.exports.deleteAllBook = function(callback){
     book.remove({},callback);
 }
 

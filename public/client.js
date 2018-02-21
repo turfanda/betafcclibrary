@@ -25,13 +25,17 @@ $(function() {
             type: "get",
             url: "api/books",
             success: function(response) {
-                console.log(response);
+if(response.length!==0){
                 $(".resultDiv").empty();
                 var ResultDiv = $("<div>");
                 response.map(function(value, index) {
                     ResultDiv.append($("<div>").addClass("infoDiv").html("<p><em><b>Book Name :</b></em>" + value.book_title + "</p><p><em><b>Book Id :</b></em>" + value.id +"<p><em><b>Comment Count :</b></em>"+ value.count));
                 })
                 $(".resultDiv").append(ResultDiv);
+}
+              else
+                $(".resultDiv").text("you dont have any book,you idiot");
+
             },
             error: function(err) {
                 $(".resultDiv").empty();
@@ -39,13 +43,13 @@ $(function() {
             }
         });
     });
-      $("#deleteAllBooks").on("click", function(e) {
+      
+  $("#deleteAllBooks").on("click", function(e) {
         e.preventDefault();
         $.ajax({
             type: "delete",
             url: "api/books",
             success: function(response) {
-                console.log(response);
                 $(".resultDiv").empty();
               $(".resultDiv").text(response);
                 
