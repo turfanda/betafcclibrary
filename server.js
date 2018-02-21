@@ -26,7 +26,7 @@ app.post("/api/books",routes.createBook);
 app.delete("/api/books",routes.deleteAllBook);
 app.get("/api/books/:book_id",routes.getBookById);
 app.post("/api/books/:book_id",routes.updateBook);
-app.delete("/api/books/:book_id",routes.deleteBook);
+app.delete("/api/books/:book_id",routes.deleteBookById);
 
 
 if (!module.parent) {

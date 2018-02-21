@@ -38,20 +38,21 @@ exports.deleteAllBook = function(req, res) {
 }
 
 exports.getBookById = function(req, res) {
-    bookModel.getBookById(req.params.book_Id, function(err, data) {
+
+    bookModel.getBookById(req.params.book_id, function(err, data) {
         if (data === null) 
-            return res.status(500).send("No such project");
+            return res.status(500).send("No such book");
         else 
             return res.json(data);
             
         });
 }
 
-exports.deleteBook = function(req, res) {
-    if (req.body.book_Id === '')
+exports.deleteBookById = function(req, res) {
+    if (req.params.book_id=== '')
         return res.status(400).send("No Id Send");
     else
-        bookModel.deleteBook(req.body.book_Id, function(err, data) {
+        bookModel.deleteBookById(req.params.book_id, function(err, data) {
             if (err)
                 return res.status(400).send("No such book");
             else

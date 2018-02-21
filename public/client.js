@@ -61,9 +61,7 @@ if(response.length!==0){
         });
     });
 
-
-
-    $("#bookGetForm").submit(function(e) {
+  $("#bookGetForm").submit(function(e) {
         e.preventDefault();
         $.ajax({
             type: "get",
@@ -74,7 +72,7 @@ if(response.length!==0){
                 var ResultDiv = $("<div>");
                     ResultDiv.append($("<div>").addClass("infoDiv").html("<p><em><b>Book Name :</b></em>" + response.book_title +
                         "</p><p><em><b>Book Id :</b></em>" + response._id +
-                        "</p><p><em><b>Comment Text :</b></em>" + String.Join("-", response.book_comment)));
+                        "</p><p><em><b>Comment Text :</b></em>" + response.book_comment.join("-")));
 
                 $(".resultDiv").append(ResultDiv);
             },
@@ -109,13 +107,11 @@ if(response.length!==0){
             }
         });
     });
-    $("#issueDeleteForm").submit(function(e) {
+    $("#bookDeleteForm").submit(function(e) {
         e.preventDefault();
-        var url = "api/issues/" + $(this).prevAll().eq(1).val();
         $.ajax({
             type: "delete",
-            url: url,
-            data: $('#issueDeleteForm').serialize(),
+             url: "/api/books/" + $("#bookDeleteForm").children().eq(0).val(),
             success: function(response) {
                 $("input").val("");
                 $(".resultDiv").empty();
